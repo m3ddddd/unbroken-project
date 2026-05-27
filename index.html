@@ -1346,7 +1346,10 @@ function toggleBib() {
   btn.textContent = bib.classList.contains('open') ? '📋 Hide Annotated Bibliography' : '📋 View Annotated Bibliography';
 }
 
-document.getElementById('home').style.display = 'flex';
+var homeEl = document.getElementById('home');
+homeEl.style.display = 'flex';
+homeEl.offsetHeight;
+homeEl.classList.add('tab-enter');
 
 function updateProgress() {
   var section = document.querySelector('section.active');

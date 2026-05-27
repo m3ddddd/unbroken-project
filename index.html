@@ -1331,7 +1331,6 @@ function showTab(id) {
   } else {
     target.style.display = 'block';
   }
-  // Force reflow so animation restarts cleanly
   target.offsetHeight;
   target.classList.add('active', 'tab-enter');
 
@@ -1376,7 +1375,6 @@ function toggleBib() {
 
 document.getElementById('home').style.display = 'flex';
 
-// ── PROGRESS BAR ──
 function updateProgress() {
   var section = document.querySelector('section.active');
   if (!section) return;
@@ -1394,7 +1392,6 @@ function updateProgress() {
 }
 window.addEventListener('scroll', updateProgress, { passive: true });
 
-// ── HORIZONTAL TIMELINE ──
 var tlIndex = 0;
 var tlTotal = 6;
 function tlMove(dir) {
@@ -1409,7 +1406,6 @@ function tlGoTo(idx) {
   document.querySelectorAll('.htimeline-dot').forEach(function(d, i) {
     d.classList.toggle('active', i === tlIndex);
   });
-  // Show next-tab button when reaching last slide
   var btn = document.getElementById('nextTabBtn');
   if (tlIndex === tlTotal - 1) {
     btn.textContent = 'Modern Impact →';
@@ -1425,7 +1421,6 @@ function tlGoTo(idx) {
   }
 }
 
-// ── GLOSSARY ──
 var glossaryTerms = {
   'Jim Crow Laws': 'State and local laws enacted mainly in Southern states that enforced racial segregation in schools, transportation, restaurants, and all public life from 1877 until the Civil Rights Act of 1964.',
   'Segregation': 'The enforced separation of people by race in schools, transportation, housing, and public spaces. In the U.S., this was legally enforced from Reconstruction through 1964.',
@@ -1454,7 +1449,6 @@ document.addEventListener('mouseout', function(e) {
   if (!e.target.closest('.glossary-term')) popup.classList.remove('visible');
 });
 
-// ── ANIMATED COUNTERS ──
 function animateCounters() {
   document.querySelectorAll('.stat-card-num[data-target]').forEach(function(el) {
     var target = parseInt(el.dataset.target);
@@ -1477,7 +1471,6 @@ function animateCounters() {
   });
 }
 
-// ── PLEDGE ──
 var pledgeCount = parseInt(localStorage.getItem('pledgeCount') || '0');
 function takePledge() {
   pledgeCount++;
@@ -1487,12 +1480,10 @@ function takePledge() {
   document.getElementById('pledgeBtn').disabled = true;
   document.getElementById('pledgeBtn').textContent = 'Pledge Taken ✓';
 }
-// Restore if already pledged
 if (pledgeCount > 0) {
   document.getElementById('pledgeNum').textContent = pledgeCount;
 }
 
-// ── NEXT TAB BUTTON ──
 var tabOrder = ['home','history','modern','stories','resist','resources'];
 var nextTabLabels = {
   'history': 'Modern Impact →',
@@ -1507,20 +1498,18 @@ function updateNextTabBtn(id) {
   var label = nextTabLabels[id];
   if (label) {
     btn.textContent = label;
-    btn.style.display = 'none'; // hide first, show after delay
+    btn.style.display = 'none';
   } else {
     btn.style.display = 'none';
     return;
   }
 
-  // For history tab: only show when on last slide
-  if (id === 'history') { return; } // shown by tlGoTo instead
+  if (id === 'history') { return; }
 
-  // For other tabs: show after 1.5s
   setTimeout(function() {
     btn.style.display = 'block';
     btn.style.animation = 'none';
-    btn.offsetHeight; // reflow
+    btn.offsetHeight;
     btn.style.animation = 'slideUpFade 0.4s ease forwards';
   }, 1500);
 }
@@ -1534,13 +1523,11 @@ function goNextTab() {
   }
 }
 
-// ── OVERRIDE showTab to trigger counter animation ──
 var _origShowTab = showTab;
 showTab = function(id) {
   _origShowTab(id);
   updateProgress();
   updateNextTabBtn(id);
-  // Reset timeline when going back to history
   if (id === 'history') { tlGoTo(0); }
   if (id === 'modern') { setTimeout(animateCounters, 300); }
 };

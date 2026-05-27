@@ -35,7 +35,6 @@
     overflow-x: hidden;
   }
 
-  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     background: rgba(13,13,13,0.95);
@@ -63,7 +62,6 @@
     color: var(--gold); background: rgba(212,160,23,0.1);
   }
 
-  /* SECTIONS */
   section { min-height: 100vh; padding-top: 60px; display: none; opacity: 0; transform: translateY(16px); }
   section.active { display: block; }
   section.tab-enter { animation: tabFadeIn 0.45s cubic-bezier(0.4,0,0.2,1) forwards; }
@@ -72,7 +70,6 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* ===================== HOME ===================== */
   #home {
     display: none; flex-direction: column;
     align-items: center; justify-content: center;
@@ -142,7 +139,6 @@
     letter-spacing: 1.5px; color: var(--text-muted); margin-top: 4px;
   }
 
-  /* ===================== SHARED STYLES ===================== */
   .section-inner { max-width: 960px; margin: 0 auto; padding: 3rem 2rem 4rem; }
   .section-header { margin-bottom: 3rem; }
   .section-eyebrow {
@@ -164,7 +160,6 @@
     height: 1px; background: var(--border); margin: 2rem 0;
   }
 
-  /* ===================== HISTORY TAB ===================== */
   .timeline { position: relative; }
   .timeline::before {
     content: '';
@@ -246,7 +241,6 @@
   }
   .filter-group-label:first-child { margin-top: 0; }
 
-  /* ===================== MODERN IMPACT ===================== */
   .stats-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem; margin-bottom: 2.5rem;
@@ -313,7 +307,6 @@
     color: var(--red); margin-top: 0.75rem;
   }
 
-  /* bar chart */
   .chart-container {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;
@@ -351,7 +344,6 @@
     min-width: 36px;
   }
 
-  /* ===================== STORIES ===================== */
   .stories-grid {
     display: grid; gap: 1.5rem;
   }
@@ -392,7 +384,6 @@
   }
   .story-source a:hover { text-decoration: underline; }
 
-  /* ===================== RESIST ===================== */
   .resist-intro {
     background: linear-gradient(135deg, rgba(192,57,43,0.15), rgba(212,160,23,0.08));
     border: 1px solid rgba(192,57,43,0.2);
@@ -460,7 +451,6 @@
     font-size: 0.88rem; color: var(--text-muted); line-height: 1.7;
   }
 
-  /* ===================== RESOURCES ===================== */
   .resources-categories { margin-bottom: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
   .res-filter {
     background: var(--surface2); border: 1px solid var(--border);
@@ -520,7 +510,6 @@
   }
   .resource-link:hover { text-decoration: underline; }
 
-  /* annotated bib toggle */
   .bib-section { margin-top: 2rem; }
   .bib-toggle {
     background: transparent; border: 1px solid var(--gold);
@@ -540,7 +529,6 @@
   }
   .bib-entry strong { color: var(--cream); }
 
-  /* FOOTER */
   footer {
     background: var(--surface); border-top: 1px solid var(--border);
     padding: 1.5rem 2rem; text-align: center;
@@ -548,19 +536,15 @@
   }
   footer a { color: var(--gold); text-decoration: none; }
 
-  /* Scrollbar */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--dark); }
   ::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 3px; }
 
-  /* hide all resource items by default via JS */
   .resource-item[data-hidden="true"] { display: none; }
 
-  /* PROGRESS BAR */
   .progress-bar { position: fixed; top: 60px; left: 0; right: 0; z-index: 999; height: 3px; }
   .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--red), var(--gold)); transition: width 0.15s linear; }
 
-  /* HORIZONTAL TIMELINE */
   .htimeline-wrapper { overflow: hidden; }
   .htimeline-track { display: flex; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
   .htimeline-slide { min-width: 100%; padding: 0 0.25rem; }
@@ -573,7 +557,6 @@
   .htimeline-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--surface3); cursor: pointer; transition: background 0.2s, transform 0.2s; }
   .htimeline-dot.active { background: var(--red); transform: scale(1.3); }
 
-  /* GLOSSARY */
   .glossary-term { border-bottom: 1px dashed var(--gold); color: inherit; cursor: pointer; transition: color 0.2s; }
   .glossary-term:hover { color: var(--gold); }
   .glossary-popup { display: none; position: fixed; z-index: 2000; background: var(--surface2); border: 1px solid var(--gold); border-radius: 8px; padding: 1rem 1.25rem; max-width: 300px; box-shadow: 0 8px 32px rgba(0,0,0,0.6); pointer-events: none; }
@@ -581,7 +564,6 @@
   .glossary-popup-term { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); letter-spacing: 1px; margin-bottom: 0.4rem; }
   .glossary-popup-def { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
 
-  /* PLEDGE */
   .pledge-section { background: linear-gradient(135deg, rgba(192,57,43,0.12), rgba(212,160,23,0.06)); border: 1px solid rgba(192,57,43,0.25); border-radius: 8px; padding: 2rem; text-align: center; margin-top: 2rem; }
   .pledge-title { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; color: var(--cream); margin-bottom: 0.5rem; }
   .pledge-subtitle { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.6; }
@@ -594,7 +576,6 @@
   .pledge-count { font-size: 0.82rem; color: var(--text-muted); }
   .pledge-count strong { color: var(--gold); font-size: 1.05rem; }
 
-  /* NEXT TAB BUTTON */
   .next-tab-btn {
     display: none; position: fixed; bottom: 2rem; right: 2rem; z-index: 900;
     background: var(--red); color: #fff; border: none;
@@ -611,14 +592,12 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* SOURCE BADGES */
   .src-badge { display: inline-block; font-size: 0.63rem; font-weight: 700; background: rgba(212,160,23,0.12); color: var(--gold); border: 1px solid rgba(212,160,23,0.25); border-radius: 3px; padding: 1px 5px; margin-left: 4px; vertical-align: middle; letter-spacing: 0.5px; }
 </style>
 </head>
 <body>
 <div class="progress-bar"><div class="progress-bar-fill" id="progressFill"></div></div>
 
-<!-- GLOSSARY POPUP -->
 <div class="glossary-popup" id="glossaryPopup"><div class="glossary-popup-term" id="glossaryTerm"></div><div class="glossary-popup-def" id="glossaryDef"></div></div>
 
 <nav>
@@ -634,7 +613,6 @@
 </nav>
 <button class="next-tab-btn" id="nextTabBtn" onclick="goNextTab()"></button>
 
-<!-- ======================== HOME ======================== -->
 <section id="home" class="active">
   <div class="home-bg"></div>
   <div class="home-content">
@@ -665,7 +643,6 @@
   </div>
 </section>
 
-<!-- ======================== HISTORY ======================== -->
 <section id="history">
   <div class="section-inner">
     <div class="section-header">
@@ -757,7 +734,6 @@
   </div>
 </section>
 
-<!-- ======================== MODERN IMPACT ======================== -->
 <section id="modern">
   <div class="section-inner">
     <div class="section-header">
@@ -924,7 +900,6 @@
   </div>
 </section>
 
-<!-- ======================== STORIES ======================== -->
 <section id="stories">
   <div class="section-inner">
     <div class="section-header">
@@ -983,7 +958,6 @@
   </div>
 </section>
 
-<!-- ======================== RESIST ======================== -->
 <section id="resist">
   <div class="section-inner">
     <div class="section-header">
@@ -1066,7 +1040,6 @@
   </div>
 </section>
 
-<!-- ======================== RESOURCES ======================== -->
 <section id="resources">
   <div class="section-inner">
     <div class="section-header">

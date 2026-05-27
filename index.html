@@ -64,8 +64,13 @@
   }
 
   /* SECTIONS */
-  section { min-height: 100vh; padding-top: 60px; display: none; }
+  section { min-height: 100vh; padding-top: 60px; display: none; opacity: 0; transform: translateY(16px); }
   section.active { display: block; }
+  section.tab-enter { animation: tabFadeIn 0.45s cubic-bezier(0.4,0,0.2,1) forwards; }
+  @keyframes tabFadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
   /* ===================== HOME ===================== */
   #home {
@@ -550,9 +555,71 @@
 
   /* hide all resource items by default via JS */
   .resource-item[data-hidden="true"] { display: none; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 60px; left: 0; right: 0; z-index: 999; height: 3px; }
+  .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--red), var(--gold)); transition: width 0.15s linear; }
+
+  /* HORIZONTAL TIMELINE */
+  .htimeline-wrapper { overflow: hidden; }
+  .htimeline-track { display: flex; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+  .htimeline-slide { min-width: 100%; padding: 0 0.25rem; }
+  .htimeline-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+  .htimeline-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--text-muted); font-size: 1.2rem; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+  .htimeline-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
+  .htimeline-btn:disabled { opacity: 0.25; cursor: default; }
+  .htimeline-counter { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
+  .htimeline-dots { display: flex; gap: 6px; justify-content: center; margin-top: 1.25rem; }
+  .htimeline-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--surface3); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+  .htimeline-dot.active { background: var(--red); transform: scale(1.3); }
+
+  /* GLOSSARY */
+  .glossary-term { border-bottom: 1px dashed var(--gold); color: inherit; cursor: pointer; transition: color 0.2s; }
+  .glossary-term:hover { color: var(--gold); }
+  .glossary-popup { display: none; position: fixed; z-index: 2000; background: var(--surface2); border: 1px solid var(--gold); border-radius: 8px; padding: 1rem 1.25rem; max-width: 300px; box-shadow: 0 8px 32px rgba(0,0,0,0.6); pointer-events: none; }
+  .glossary-popup.visible { display: block; }
+  .glossary-popup-term { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); letter-spacing: 1px; margin-bottom: 0.4rem; }
+  .glossary-popup-def { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* PLEDGE */
+  .pledge-section { background: linear-gradient(135deg, rgba(192,57,43,0.12), rgba(212,160,23,0.06)); border: 1px solid rgba(192,57,43,0.25); border-radius: 8px; padding: 2rem; text-align: center; margin-top: 2rem; }
+  .pledge-title { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; color: var(--cream); margin-bottom: 0.5rem; }
+  .pledge-subtitle { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.6; }
+  .pledge-btn { background: var(--red); color: #fff; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.9rem 2.5rem; border-radius: 3px; cursor: pointer; transition: background 0.2s, transform 0.2s; }
+  .pledge-btn:hover:not(:disabled) { background: var(--red-light); transform: translateY(-2px); }
+  .pledge-btn:disabled { opacity: 0.5; cursor: default; transform: none; }
+  .pledge-confirmation { display: none; margin-top: 1.25rem; }
+  .pledge-confirmation.show { display: block; }
+  .pledge-statement { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1rem; color: var(--gold-light); line-height: 1.8; margin-bottom: 0.75rem; }
+  .pledge-count { font-size: 0.82rem; color: var(--text-muted); }
+  .pledge-count strong { color: var(--gold); font-size: 1.05rem; }
+
+  /* NEXT TAB BUTTON */
+  .next-tab-btn {
+    display: none; position: fixed; bottom: 2rem; right: 2rem; z-index: 900;
+    background: var(--red); color: #fff; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+    font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 0.85rem 1.75rem; border-radius: 4px; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(192,57,43,0.5);
+    animation: slideUpFade 0.4s ease forwards;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .next-tab-btn:hover { background: var(--red-light); transform: translateY(-2px); }
+  @keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SOURCE BADGES */
+  .src-badge { display: inline-block; font-size: 0.63rem; font-weight: 700; background: rgba(212,160,23,0.12); color: var(--gold); border: 1px solid rgba(212,160,23,0.25); border-radius: 3px; padding: 1px 5px; margin-left: 4px; vertical-align: middle; letter-spacing: 0.5px; }
 </style>
 </head>
 <body>
+<div class="progress-bar"><div class="progress-bar-fill" id="progressFill"></div></div>
+
+<!-- GLOSSARY POPUP -->
+<div class="glossary-popup" id="glossaryPopup"><div class="glossary-popup-term" id="glossaryTerm"></div><div class="glossary-popup-def" id="glossaryDef"></div></div>
 
 <nav>
   <a class="nav-brand" href="#" onclick="showTab('home')">UNBROKEN</a>
@@ -565,6 +632,7 @@
     <li><a href="#" onclick="showTab('resources')" id="nav-resources">Resources</a></li>
   </ul>
 </nav>
+<button class="next-tab-btn" id="nextTabBtn" onclick="goNextTab()"></button>
 
 <!-- ======================== HOME ======================== -->
 <section id="home" class="active">
@@ -606,87 +674,86 @@
       <p class="section-lead">From the Jim Crow era to the Civil Rights Movement: a record of struggle, survival, and the fight for equality in American education and society.</p>
     </div>
     <div class="divider"></div>
-    <div class="timeline">
 
-      <div class="timeline-entry">
-        <div class="timeline-dot">
-          <div class="timeline-dot-circle"></div>
-          <div class="timeline-year">1865</div>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-card-title">Post-Slavery & Early Discrimination</div>
-          <div class="timeline-card-body">After the Civil War and the abolition of slavery, Black Americans faced systematic exclusion through Black Codes and early segregation. The Reconstruction era promised equality but was quickly dismantled by white supremacist violence and political rollback.</div>
-          <div class="golden-line">"The end of slavery did not mean the beginning of freedom — it meant the beginning of a different kind of bondage: economic, legal, and social."</div>
-          <a class="source-tag" href="https://library.law.howard.edu/civilrightshistory/blackrights/jimcrow" target="_blank">Source: Howard Law Library, Civil Rights History ↗</a>
-        </div>
+    <div class="htimeline-wrapper">
+      <div class="htimeline-nav">
+        <button class="htimeline-btn" id="tlPrev" onclick="tlMove(-1)" disabled>&#8592;</button>
+        <span class="htimeline-counter" id="tlCounter">1 / 6</span>
+        <button class="htimeline-btn" id="tlNext" onclick="tlMove(1)">&#8594;</button>
       </div>
+      <div class="htimeline-track" id="tlTrack">
 
-      <div class="timeline-entry">
-        <div class="timeline-dot">
-          <div class="timeline-dot-circle"></div>
-          <div class="timeline-year">1877</div>
+        <div class="htimeline-slide">
+          <div class="timeline-card" style="margin:0;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:var(--red); line-height:1; margin-bottom:0.25rem;">1865</div>
+            <div class="timeline-card-title">Post-Slavery &amp; Early Discrimination</div>
+            <div class="timeline-card-body">After the Civil War and the abolition of slavery, Black Americans faced systematic exclusion through Black Codes and early segregation. The Reconstruction era promised equality but was quickly dismantled by white supremacist violence and political rollback.</div>
+            <div class="golden-line">"The end of slavery did not mean the beginning of freedom — it meant the beginning of a different kind of bondage: economic, legal, and social."</div>
+            <a class="source-tag" href="https://library.law.howard.edu/civilrightshistory/blackrights/jimcrow" target="_blank">Source 2: Howard Law Library ↗</a>
+          </div>
         </div>
-        <div class="timeline-card">
-          <div class="timeline-card-title">Jim Crow Laws Take Hold</div>
-          <div class="timeline-card-body">Following the end of Reconstruction, Southern states enacted "Jim Crow" laws mandating racial segregation in schools, public transportation, restaurants, restrooms, and nearly every aspect of public life. Interracial marriage was outlawed. Voting rights were stripped through literacy tests and poll taxes.</div>
-          <div class="golden-line">"Separate but equal" became the law of the land, but the separation was real and the equality was a lie.</div>
-          <a class="source-tag" href="https://library.law.howard.edu/civilrightshistory/blackrights/jimcrow" target="_blank">Source: Howard Law Library, Jim Crow ↗</a>
+
+        <div class="htimeline-slide">
+          <div class="timeline-card" style="margin:0;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:var(--red); line-height:1; margin-bottom:0.25rem;">1877</div>
+            <div class="timeline-card-title"><span class="glossary-term" data-term="Jim Crow Laws" data-def="State and local laws enacted mainly in Southern states that enforced racial segregation in schools, transportation, restaurants, and all public life from 1877 until the Civil Rights Act of 1964.">Jim Crow</span> Laws Take Hold</div>
+            <div class="timeline-card-body">Following the end of Reconstruction, Southern states enacted "Jim Crow" laws mandating racial segregation in schools, public transportation, restaurants, restrooms, and nearly every aspect of public life. Interracial marriage was outlawed. Voting rights were stripped through literacy tests and poll taxes.</div>
+            <div class="golden-line">"Separate but equal" became the law of the land, but the separation was real and the equality was a lie.</div>
+            <a class="source-tag" href="https://library.law.howard.edu/civilrightshistory/blackrights/jimcrow" target="_blank">Source 2: Howard Law Library ↗</a>
+          </div>
         </div>
+
+        <div class="htimeline-slide">
+          <div class="timeline-card" style="margin:0;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:var(--red); line-height:1; margin-bottom:0.25rem;">1896</div>
+            <div class="timeline-card-title">Plessy v. Ferguson</div>
+            <div class="timeline-card-body">The U.S. Supreme Court ruled in Plessy v. Ferguson that racial segregation was constitutional under the "separate but equal" doctrine. This decision legally cemented <span class="glossary-term" data-term="Segregation" data-def="The enforced separation of people by race in schools, transportation, housing, and public spaces. In the U.S., this was legally enforced from Reconstruction through 1964.">segregation</span> for nearly 60 years and became the foundation for discrimination across every American institution.</div>
+            <div class="golden-line">"The arbitrary separation of citizens on the basis of race... is a badge of servitude wholly inconsistent with the civil freedom and the equality before the law." — Justice John Harlan, dissenting</div>
+            <a class="source-tag" href="https://www.archives.gov/milestone-documents/brown-v-board-of-education" target="_blank">Source 1: National Archives ↗</a>
+          </div>
+        </div>
+
+        <div class="htimeline-slide">
+          <div class="timeline-card" style="margin:0;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:var(--red); line-height:1; margin-bottom:0.25rem;">1954</div>
+            <div class="timeline-card-title">Brown v. Board of Education</div>
+            <div class="timeline-card-body">In a unanimous ruling, the Supreme Court declared that racial segregation in public schools was unconstitutional, overturning Plessy v. Ferguson. Chief Justice Earl Warren wrote that "separate educational facilities are inherently unequal." The ruling sparked massive resistance in the South and galvanized the Civil Rights Movement.</div>
+            <div class="golden-line">"Separate educational facilities are inherently unequal." — Chief Justice Earl Warren, Brown v. Board (1954)</div>
+            <a class="source-tag" href="https://www.archives.gov/milestone-documents/brown-v-board-of-education" target="_blank">Source 1: National Archives ↗</a>
+          </div>
+        </div>
+
+        <div class="htimeline-slide">
+          <div class="timeline-card" style="margin:0;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:var(--red); line-height:1; margin-bottom:0.25rem;">1955–65</div>
+            <div class="timeline-card-title">The Civil Rights Movement</div>
+            <div class="timeline-card-body">Sparked by Rosa Parks' arrest, the Montgomery Bus Boycott launched a decade of direct action. Sit-ins, Freedom Rides, and the March on Washington followed. The Civil Rights Act of 1964 and Voting Rights Act of 1965 dismantled the legal structure of <span class="glossary-term" data-term="Jim Crow Laws" data-def="State and local laws enacted mainly in Southern states that enforced racial segregation in schools, transportation, restaurants, and all public life from 1877 until the Civil Rights Act of 1964.">Jim Crow</span>, but systemic inequality persisted.</div>
+            <div class="golden-line">"Injustice anywhere is a threat to justice everywhere." — Dr. Martin Luther King Jr.</div>
+            <a class="source-tag" href="https://nmaahc.si.edu/explore/stories/struggle-against-segregated-education" target="_blank">Source 3: Smithsonian NMAAHC ↗</a>
+          </div>
+        </div>
+
+        <div class="htimeline-slide">
+          <div class="timeline-card" style="margin:0;">
+            <div style="font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:var(--red); line-height:1; margin-bottom:0.25rem;">1964</div>
+            <div class="timeline-card-title">NYC School Boycott: Student Power</div>
+            <div class="timeline-card-body">On February 3, 1964, nearly half a million New York City students (the largest civil rights demonstration in U.S. history) boycotted school to protest segregated and underfunded Black schools. Organized by parents and activists, the boycott demonstrated that students themselves were powerful agents of change.</div>
+            <div class="golden-line">"The children of New York walked out not in anger but in clarity — they understood that an unequal education was a stolen future."</div>
+            <a class="source-tag" href="https://time.com/5890985/school-boycott-history/" target="_blank">Source 7: TIME Magazine ↗</a>
+          </div>
+        </div>
+
       </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot">
-          <div class="timeline-dot-circle"></div>
-          <div class="timeline-year">1896</div>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-card-title">Plessy v. Ferguson</div>
-          <div class="timeline-card-body">The U.S. Supreme Court ruled in Plessy v. Ferguson that racial segregation was constitutional under the "separate but equal" doctrine. This decision legally cemented segregation for nearly 60 years and became the foundation for discrimination across every American institution.</div>
-          <div class="golden-line">"The arbitrary separation of citizens on the basis of race... is a badge of servitude wholly inconsistent with the civil freedom and the equality before the law." — Justice John Harlan, dissenting</div>
-          <a class="source-tag" href="https://www.archives.gov/milestone-documents/brown-v-board-of-education" target="_blank">Source: National Archives, Brown v. Board ↗</a>
-        </div>
+      <div class="htimeline-dots" id="tlDots">
+        <div class="htimeline-dot active" onclick="tlGoTo(0)"></div>
+        <div class="htimeline-dot" onclick="tlGoTo(1)"></div>
+        <div class="htimeline-dot" onclick="tlGoTo(2)"></div>
+        <div class="htimeline-dot" onclick="tlGoTo(3)"></div>
+        <div class="htimeline-dot" onclick="tlGoTo(4)"></div>
+        <div class="htimeline-dot" onclick="tlGoTo(5)"></div>
       </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot">
-          <div class="timeline-dot-circle"></div>
-          <div class="timeline-year">1954</div>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-card-title">Brown v. Board of Education</div>
-          <div class="timeline-card-body">In a unanimous ruling, the Supreme Court declared that racial segregation in public schools was unconstitutional, overturning Plessy v. Ferguson. Chief Justice Earl Warren wrote that "separate educational facilities are inherently unequal." The ruling sparked massive resistance in the South and galvanized the Civil Rights Movement.</div>
-          <div class="golden-line">"Separate educational facilities are inherently unequal." — Chief Justice Earl Warren, Brown v. Board (1954)</div>
-          <a class="source-tag" href="https://www.archives.gov/milestone-documents/brown-v-board-of-education" target="_blank">Source: National Archives, archives.gov ↗</a>
-        </div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot">
-          <div class="timeline-dot-circle"></div>
-          <div class="timeline-year">1955–65</div>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-card-title">The Civil Rights Movement</div>
-          <div class="timeline-card-body">Sparked by Rosa Parks' arrest, the Montgomery Bus Boycott launched a decade of direct action. Sit-ins, Freedom Rides, and the March on Washington followed. The Civil Rights Act of 1964 and Voting Rights Act of 1965 dismantled the legal structure of Jim Crow, but systemic inequality persisted.</div>
-          <div class="golden-line">"Injustice anywhere is a threat to justice everywhere." — Dr. Martin Luther King Jr.</div>
-          <a class="source-tag" href="https://nmaahc.si.edu/explore/stories/struggle-against-segregated-education" target="_blank">Source: Smithsonian NMAAHC, nmaahc.si.edu ↗</a>
-        </div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-dot">
-          <div class="timeline-dot-circle"></div>
-          <div class="timeline-year">1964</div>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-card-title">NYC School Boycott: Student Power</div>
-          <div class="timeline-card-body">On February 3, 1964, nearly half a million New York City students (the largest civil rights demonstration in U.S. history) boycotted school to protest segregated and underfunded Black schools. Organized by parents and activists, the boycott demonstrated that students themselves were powerful agents of change.</div>
-          <div class="golden-line">"The children of New York walked out not in anger but in clarity — they understood that an unequal education was a stolen future."</div>
-          <a class="source-tag" href="https://time.com/5890985/school-boycott-history/" target="_blank">Source: TIME Magazine, "Nearly Half of NYC Students Boycotted Schools" ↗</a>
-        </div>
-      </div>
-
     </div>
+
   </div>
 </section>
 
@@ -701,23 +768,23 @@
 
     <div class="stats-grid">
       <div class="stat-card red">
-        <div class="stat-card-num">$23B</div>
-        <div class="stat-card-label">Less funding per year for non-white districts vs. white districts, serving the same number of students</div>
+        <div class="stat-card-num" data-target="23" data-prefix="$" data-suffix="B">$0B</div>
+        <div class="stat-card-label">Less funding per year for non-white districts vs. white districts, serving the same number of students <span class="src-badge">Source 4</span></div>
         <a href="https://www.cnn.com/2019/02/27/us/education-funding-disparity-study-trnd" target="_blank" class="stat-card-source stat-card-source-link">CNN: Education Funding Study ↗</a>
       </div>
       <div class="stat-card gold">
-        <div class="stat-card-num">$2,226</div>
-        <div class="stat-card-label">Less per student in the average non-white district compared to white districts</div>
+        <div class="stat-card-num" data-target="2226" data-prefix="$" data-comma="true">$0</div>
+        <div class="stat-card-label">Less per student in the average non-white district compared to white districts <span class="src-badge">Source 6</span></div>
         <a href="https://www.edweek.org/policy-politics/united-states-spends-23-billion-more-on-white-districts-than-nonwhite-ones/2019/03" target="_blank" class="stat-card-source stat-card-source-link">Education Week ↗</a>
       </div>
       <div class="stat-card white">
-        <div class="stat-card-num">40%</div>
-        <div class="stat-card-label">Of Black students attend intensely segregated (90–100% non-white) schools as of 2018</div>
+        <div class="stat-card-num" data-target="40" data-suffix="%">0%</div>
+        <div class="stat-card-label">Of Black students attend intensely segregated (90–100% non-white) schools as of 2018 <span class="src-badge">Source 6</span></div>
         <a href="https://civilrightsproject.ucla.edu/press-releases/black-segregation-matters-new-report-details-status-of-black-students-urges-incoming-biden-administration-to-act-to-confront-pervasive-segregation" target="_blank" class="stat-card-source stat-card-source-link">UCLA Civil Rights Project ↗</a>
       </div>
       <div class="stat-card red">
         <div class="stat-card-num">2025</div>
-        <div class="stat-card-label">NAACP sues US Dept. of Education over DEI school funding cuts</div>
+        <div class="stat-card-label">NAACP sues US Dept. of Education over DEI school funding cuts <span class="src-badge">Source 5</span></div>
         <a href="https://www.reuters.com/world/us/naacp-sues-us-education-department-over-dei-school-funding-cuts-2025-04-15/" target="_blank" class="stat-card-source stat-card-source-link">Reuters ↗</a>
       </div>
     </div>
@@ -807,7 +874,7 @@
         <div class="impact-card-title">Education Inequality</div>
         <div class="impact-card-body">Decades after Brown v. Board, Black and Latino students are still concentrated in underfunded schools.</div>
         <div class="impact-card-detail">
-          School funding in the U.S. is largely based on local property taxes, meaning wealthier (often whiter) neighborhoods have far better-resourced schools. A 2024 AP News report found that even with school choice programs, many Black families still face limited options. The NAACP sued the U.S. Education Department in April 2025 over cuts to DEI school funding, arguing these cuts directly harm students of color.
+          School funding in the U.S. is largely based on local property taxes, meaning wealthier (often whiter) neighborhoods have far better-resourced schools. <span class="src-badge">Source 4</span> A 2024 AP News report found that even with school choice programs, many Black families still face limited options. The NAACP sued the U.S. Education Department in April 2025 over cuts to DEI school funding, arguing these cuts directly harm students of color.
           <div class="golden-line">"Choice without equity is just choosing your inequality." — NAACP Education Brief</div>
           <div style="margin-top:0.75rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
             <a href="https://naacp.org/resources/naacp-calls-equity-public-education" target="_blank" class="source-tag">NAACP Education Equity ↗</a>
@@ -836,7 +903,7 @@
         <div class="impact-card-title">Housing & Economic Gaps</div>
         <div class="impact-card-body">Redlining's legacy still shapes where families live, what schools they can access, and what wealth they can build.</div>
         <div class="impact-card-detail">
-          The practice of redlining (government-backed denial of mortgages to Black families in the mid-20th century) stripped generations of wealth. Today, the racial wealth gap persists: the median white family holds roughly 8× the wealth of the median Black family. Neighborhoods that were redlined in the 1940s are still lower-income today, and the schools in those neighborhoods still receive less funding.
+          The practice of <span class="glossary-term" data-term="Redlining" data-def="A discriminatory practice from the 1930s-60s where banks and the government denied mortgages to Black families in certain neighborhoods, preventing them from building wealth through homeownership.">redlining</span> (government-backed denial of mortgages to Black families in the mid-20th century) stripped generations of wealth. Today, the racial wealth gap persists: the median white family holds roughly 8× the wealth of the median Black family. Neighborhoods that were redlined in the 1940s are still lower-income today, and the schools in those neighborhoods still receive less funding.
           <div class="golden-line">"Redlining didn't just deny homes — it denied generational wealth, good schools, and safety." — Pew Research</div>
           <div style="margin-top:0.75rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
             <a href="https://www.pewresearch.org/topic/race-ethnicity/" target="_blank" class="source-tag">Pew Research Center ↗</a>
@@ -1251,8 +1318,10 @@
 <script>
 function showTab(id) {
   document.querySelectorAll('section').forEach(s => {
-    s.classList.remove('active');
+    s.classList.remove('active', 'tab-enter');
     s.style.display = '';
+    s.style.opacity = '';
+    s.style.transform = '';
   });
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
 
@@ -1262,12 +1331,14 @@ function showTab(id) {
   } else {
     target.style.display = 'block';
   }
-  target.classList.add('active');
+  // Force reflow so animation restarts cleanly
+  target.offsetHeight;
+  target.classList.add('active', 'tab-enter');
 
   const navEl = document.getElementById('nav-' + id);
   if (navEl) navEl.classList.add('active');
 
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: 'instant' });
   return false;
 }
 
@@ -1304,6 +1375,175 @@ function toggleBib() {
 }
 
 document.getElementById('home').style.display = 'flex';
+
+// ── PROGRESS BAR ──
+function updateProgress() {
+  var section = document.querySelector('section.active');
+  if (!section) return;
+  var id = section.id;
+  if (id === 'home') { document.getElementById('progressFill').style.width = '0%'; return; }
+  var tabs = ['history','modern','stories','resist','resources'];
+  var idx = tabs.indexOf(id);
+  if (idx === -1) return;
+  var scrollTop = section.scrollTop || window.pageYOffset || 0;
+  var scrollHeight = (section.scrollHeight || document.body.scrollHeight) - window.innerHeight;
+  var tabProgress = scrollHeight > 0 ? Math.min(scrollTop / scrollHeight, 1) : 0;
+  var tabWidth = 100 / tabs.length;
+  var pct = (idx * tabWidth) + (tabProgress * tabWidth);
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+
+// ── HORIZONTAL TIMELINE ──
+var tlIndex = 0;
+var tlTotal = 6;
+function tlMove(dir) {
+  tlGoTo(tlIndex + dir);
+}
+function tlGoTo(idx) {
+  tlIndex = Math.max(0, Math.min(tlTotal - 1, idx));
+  document.getElementById('tlTrack').style.transform = 'translateX(-' + (tlIndex * 100) + '%)';
+  document.getElementById('tlCounter').textContent = (tlIndex + 1) + ' / ' + tlTotal;
+  document.getElementById('tlPrev').disabled = tlIndex === 0;
+  document.getElementById('tlNext').disabled = tlIndex === tlTotal - 1;
+  document.querySelectorAll('.htimeline-dot').forEach(function(d, i) {
+    d.classList.toggle('active', i === tlIndex);
+  });
+  // Show next-tab button when reaching last slide
+  var btn = document.getElementById('nextTabBtn');
+  if (tlIndex === tlTotal - 1) {
+    btn.textContent = 'Modern Impact →';
+    btn.style.display = 'none';
+    setTimeout(function() {
+      btn.style.display = 'block';
+      btn.style.animation = 'none';
+      btn.offsetHeight;
+      btn.style.animation = 'slideUpFade 0.4s ease forwards';
+    }, 600);
+  } else {
+    btn.style.display = 'none';
+  }
+}
+
+// ── GLOSSARY ──
+var glossaryTerms = {
+  'Jim Crow Laws': 'State and local laws enacted mainly in Southern states that enforced racial segregation in schools, transportation, restaurants, and all public life from 1877 until the Civil Rights Act of 1964.',
+  'Segregation': 'The enforced separation of people by race in schools, transportation, housing, and public spaces. In the U.S., this was legally enforced from Reconstruction through 1964.',
+  'Redlining': 'A discriminatory practice from the 1930s–60s where banks and the government denied mortgages to Black families in certain neighborhoods, preventing them from building wealth through homeownership.',
+  'DEI': 'Diversity, Equity, and Inclusion. Programs designed to ensure equal opportunities and representation for people from all backgrounds, particularly in education and the workplace.',
+  'Reconstruction': 'The period from 1865–1877 after the Civil War when the U.S. government attempted to reintegrate Southern states and establish rights for formerly enslaved people, before being dismantled by white supremacist resistance.',
+  'Systemic Racism': 'Racism embedded in the policies, institutions, and structures of society — not just individual prejudice — that creates unequal outcomes for people based on race.'
+};
+
+var popup = document.getElementById('glossaryPopup');
+document.addEventListener('mouseover', function(e) {
+  var el = e.target.closest('.glossary-term');
+  if (!el) { popup.classList.remove('visible'); return; }
+  var term = el.dataset.term;
+  var def = el.dataset.def || glossaryTerms[term] || '';
+  document.getElementById('glossaryTerm').textContent = term;
+  document.getElementById('glossaryDef').textContent = def;
+  var rect = el.getBoundingClientRect();
+  var top = rect.bottom + 8;
+  var left = Math.min(rect.left, window.innerWidth - 320);
+  popup.style.top = top + 'px';
+  popup.style.left = Math.max(8, left) + 'px';
+  popup.classList.add('visible');
+});
+document.addEventListener('mouseout', function(e) {
+  if (!e.target.closest('.glossary-term')) popup.classList.remove('visible');
+});
+
+// ── ANIMATED COUNTERS ──
+function animateCounters() {
+  document.querySelectorAll('.stat-card-num[data-target]').forEach(function(el) {
+    var target = parseInt(el.dataset.target);
+    var prefix = el.dataset.prefix || '';
+    var suffix = el.dataset.suffix || '';
+    var useComma = el.dataset.comma === 'true';
+    var start = 0;
+    var duration = 1200;
+    var startTime = null;
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 3);
+      var val = Math.round(start + (target - start) * ease);
+      var display = useComma ? val.toLocaleString() : val;
+      el.textContent = prefix + display + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+// ── PLEDGE ──
+var pledgeCount = parseInt(localStorage.getItem('pledgeCount') || '0');
+function takePledge() {
+  pledgeCount++;
+  try { localStorage.setItem('pledgeCount', pledgeCount); } catch(e) {}
+  document.getElementById('pledgeNum').textContent = pledgeCount;
+  document.getElementById('pledgeConfirm').classList.add('show');
+  document.getElementById('pledgeBtn').disabled = true;
+  document.getElementById('pledgeBtn').textContent = 'Pledge Taken ✓';
+}
+// Restore if already pledged
+if (pledgeCount > 0) {
+  document.getElementById('pledgeNum').textContent = pledgeCount;
+}
+
+// ── NEXT TAB BUTTON ──
+var tabOrder = ['home','history','modern','stories','resist','resources'];
+var nextTabLabels = {
+  'history': 'Modern Impact →',
+  'modern': 'Stories →',
+  'stories': 'How to Resist →',
+  'resist': 'Resources →',
+  'resources': null
+};
+
+function updateNextTabBtn(id) {
+  var btn = document.getElementById('nextTabBtn');
+  var label = nextTabLabels[id];
+  if (label) {
+    btn.textContent = label;
+    btn.style.display = 'none'; // hide first, show after delay
+  } else {
+    btn.style.display = 'none';
+    return;
+  }
+
+  // For history tab: only show when on last slide
+  if (id === 'history') { return; } // shown by tlGoTo instead
+
+  // For other tabs: show after 1.5s
+  setTimeout(function() {
+    btn.style.display = 'block';
+    btn.style.animation = 'none';
+    btn.offsetHeight; // reflow
+    btn.style.animation = 'slideUpFade 0.4s ease forwards';
+  }, 1500);
+}
+
+function goNextTab() {
+  var current = document.querySelector('section.active');
+  if (!current) return;
+  var idx = tabOrder.indexOf(current.id);
+  if (idx >= 0 && idx < tabOrder.length - 1) {
+    showTab(tabOrder[idx + 1]);
+  }
+}
+
+// ── OVERRIDE showTab to trigger counter animation ──
+var _origShowTab = showTab;
+showTab = function(id) {
+  _origShowTab(id);
+  updateProgress();
+  updateNextTabBtn(id);
+  // Reset timeline when going back to history
+  if (id === 'history') { tlGoTo(0); }
+  if (id === 'modern') { setTimeout(animateCounters, 300); }
+};
 </script>
 </body>
 </html>

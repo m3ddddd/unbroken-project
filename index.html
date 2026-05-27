@@ -510,24 +510,6 @@
   }
   .resource-link:hover { text-decoration: underline; }
 
-  .bib-section { margin-top: 2rem; }
-  .bib-toggle {
-    background: transparent; border: 1px solid var(--gold);
-    color: var(--gold); font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;
-    text-transform: uppercase; padding: 0.65rem 1.5rem;
-    border-radius: 3px; cursor: pointer; transition: all 0.2s;
-    margin-bottom: 1rem;
-  }
-  .bib-toggle:hover { background: var(--gold); color: var(--dark); }
-  .bib-content { display: none; }
-  .bib-content.open { display: block; }
-  .bib-entry {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 6px; padding: 1.25rem; margin-bottom: 0.75rem;
-    font-size: 0.85rem; line-height: 1.7; color: var(--text-muted);
-  }
-  .bib-entry strong { color: var(--cream); }
 
   footer {
     background: var(--surface); border-top: 1px solid var(--border);
@@ -1043,7 +1025,7 @@
 <section id="resources">
   <div class="section-inner">
     <div class="section-header">
-      <p class="section-eyebrow">Tab 05: Annotated Bibliography</p>
+      <p class="section-eyebrow">Tab 05: Sources</p>
       <h2 class="section-title">RE<span>SOURCES</span></h2>
       <p class="section-lead">All sources used in this project: government archives, academic research, news media, civil rights organizations, and statistical data.</p>
     </div>
@@ -1074,11 +1056,11 @@
         <div class="resource-icon gov">📜</div>
         <div class="resource-content">
           <div class="resource-title">Brown v. Board of Education: National Archives</div>
-          <div class="resource-desc">Primary historical government archive documenting the landmark 1954 Supreme Court ruling that declared school segregation unconstitutional. Includes original case documents, historical context, and significance.</div>
+          <div class="resource-desc">Primary government archive documenting the landmark 1954 Supreme Court ruling that declared school segregation unconstitutional. Includes original case documents and historical context.</div>
           <div class="resource-quote">"Separate educational facilities are inherently unequal." — Chief Justice Earl Warren</div>
           <div class="resource-meta">
-            <span class="resource-badge gov">Government Archive</span>
-            <span class="resource-badge edu">Primary Source</span>
+            <span class="resource-badge gov">Government</span>
+            <span class="src-badge">Source 1</span>
             <a href="https://www.archives.gov/milestone-documents/brown-v-board-of-education" target="_blank" class="resource-link">archives.gov →</a>
           </div>
         </div>
@@ -1088,10 +1070,11 @@
         <div class="resource-icon edu">⚖️</div>
         <div class="resource-content">
           <div class="resource-title">Reconstruction and Jim Crow Eras: Howard Law Library</div>
-          <div class="resource-desc">Howard University School of Law's Civil Rights History collection explaining Jim Crow segregation laws and the systematic discrimination against Black Americans following the Civil War and the dismantling of Reconstruction.</div>
-          <div class="resource-quote">"Jim Crow laws embedded racial hierarchy into every corner of public life — transportation, schools, restaurants, restrooms, and voting."</div>
+          <div class="resource-desc">Howard University School of Law's Civil Rights History collection explaining Jim Crow segregation laws and the systematic discrimination against Black Americans following the Civil War.</div>
+          <div class="resource-quote">"Jim Crow laws embedded racial hierarchy into every corner of public life, from transportation to schools to restaurants to voting."</div>
           <div class="resource-meta">
-            <span class="resource-badge edu">Academic / Law Library</span>
+            <span class="resource-badge edu">Academic</span>
+            <span class="src-badge">Source 2</span>
             <a href="https://library.law.howard.edu/civilrightshistory/blackrights/jimcrow" target="_blank" class="resource-link">howard.edu →</a>
           </div>
         </div>
@@ -1101,10 +1084,11 @@
         <div class="resource-icon edu">🏛️</div>
         <div class="resource-content">
           <div class="resource-title">The Struggle Against Segregated Education: Smithsonian NMAAHC</div>
-          <div class="resource-desc">The National Museum of African American History and Culture documents the decades of organized resistance against segregated schools, from the Little Rock Nine to the Freedom Schools, examining how education became a central battleground for civil rights.</div>
-          <div class="resource-quote">"Education has always been a battleground — those in power understood that an educated people cannot easily be oppressed."</div>
+          <div class="resource-desc">The National Museum of African American History and Culture documents decades of resistance against segregated schools, from the Little Rock Nine to the Freedom Schools of Mississippi.</div>
+          <div class="resource-quote">"Education has always been the civil rights battleground, because those in power know that an educated, informed people cannot be controlled."</div>
           <div class="resource-meta">
-            <span class="resource-badge edu">Smithsonian / Museum</span>
+            <span class="resource-badge edu">Smithsonian</span>
+            <span class="src-badge">Source 3</span>
             <a href="https://nmaahc.si.edu/explore/stories/struggle-against-segregated-education" target="_blank" class="resource-link">nmaahc.si.edu →</a>
           </div>
         </div>
@@ -1114,10 +1098,11 @@
         <div class="resource-icon org">✊</div>
         <div class="resource-content">
           <div class="resource-title">NAACP Calls for Equity in Public Education</div>
-          <div class="resource-desc">NAACP resource covering the ongoing racial inequalities in public education, including underfunded schools, biased discipline, curriculum gaps, and the continued fight for equitable resources for Black and minority students.</div>
-          <div class="resource-quote">"Equal education is not a privilege — it is a constitutional right that continues to be denied to millions of students of color."</div>
+          <div class="resource-desc">NAACP resource covering ongoing racial inequalities in public education, including underfunded schools, biased discipline, and the continued fight for equitable resources for Black and minority students.</div>
+          <div class="resource-quote">"Equal education is not a privilege. It is a constitutional right that continues to be denied to millions of students of color."</div>
           <div class="resource-meta">
             <span class="resource-badge org">Civil Rights Org</span>
+            <span class="src-badge">Source 4</span>
             <a href="https://naacp.org/resources/naacp-calls-equity-public-education" target="_blank" class="resource-link">naacp.org →</a>
           </div>
         </div>
@@ -1127,37 +1112,25 @@
         <div class="resource-icon news">📰</div>
         <div class="resource-content">
           <div class="resource-title">NAACP Sues U.S. Education Department Over DEI Funding Cuts: Reuters</div>
-          <div class="resource-desc">April 2025 Reuters news article reporting on the NAACP's federal lawsuit against the U.S. Department of Education, arguing that cuts to DEI programs in schools disproportionately harm students of color and violate civil rights protections.</div>
+          <div class="resource-desc">April 2025 Reuters news article on the NAACP federal lawsuit against the U.S. Department of Education, arguing that cuts to DEI programs disproportionately harm students of color.</div>
           <div class="resource-quote">"The cuts represent a direct attack on the educational opportunities of children of color across the country." — NAACP statement cited by Reuters</div>
           <div class="resource-meta">
-            <span class="resource-badge news">News: Reuters</span>
-            <span class="resource-badge org">Modern / 2025</span>
+            <span class="resource-badge news">News</span>
+            <span class="src-badge">Source 5</span>
             <a href="https://www.reuters.com/world/us/naacp-sues-us-education-department-over-dei-school-funding-cuts-2025-04-15/" target="_blank" class="resource-link">reuters.com →</a>
           </div>
         </div>
       </div>
 
-      <div class="resource-item" data-cat="news" data-tab="modern stories">
-        <div class="resource-icon news">📰</div>
-        <div class="resource-content">
-          <div class="resource-title">Even With School Choice, Some Black Families Find Options Lacking: AP News</div>
-          <div class="resource-desc">AP News investigative report examining how, decades after Brown v. Board, Black families using school choice programs still find their options severely limited by transportation barriers, selective admissions, and resource disparities that school choice does not resolve.</div>
-          <div class="resource-quote">"We were told we could choose. But every option we were given was the same kind of lacking."</div>
-          <div class="resource-meta">
-            <span class="resource-badge news">News: AP</span>
-            <a href="https://apnews.com/article/179b6a3cebfdd617a0bf4b6a281ba3ad" target="_blank" class="resource-link">apnews.com →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="resource-item" data-cat="stats" data-tab="modern resist">
+      <div class="resource-item" data-cat="stats" data-tab="modern">
         <div class="resource-icon stats">📊</div>
         <div class="resource-content">
           <div class="resource-title">Race and Ethnicity: Pew Research Center</div>
-          <div class="resource-desc">Pew Research Center's comprehensive ongoing research hub covering race, ethnicity, and inequality in modern American society, including data on education gaps, policing, economic disparities, and public opinion on race.</div>
+          <div class="resource-desc">Pew Research Center research hub covering race, ethnicity, and inequality in modern American society, including data on education gaps, policing disparities, and economic inequality.</div>
           <div class="resource-quote">"The data consistently shows that race continues to shape outcomes in education, employment, and the justice system in the United States."</div>
           <div class="resource-meta">
-            <span class="resource-badge stats">Research / Statistics</span>
+            <span class="resource-badge stats">Statistics</span>
+            <span class="src-badge">Source 6</span>
             <a href="https://www.pewresearch.org/topic/race-ethnicity/" target="_blank" class="resource-link">pewresearch.org →</a>
           </div>
         </div>
@@ -1167,124 +1140,25 @@
         <div class="resource-icon news">📰</div>
         <div class="resource-content">
           <div class="resource-title">Nearly Half of NYC Students Boycotted Schools to Protest Segregation: TIME</div>
-          <div class="resource-desc">TIME Magazine historical feature on the February 3, 1964 New York City school boycott, the largest civil rights demonstration in U.S. history, when nearly 464,000 students boycotted school to protest segregated and underfunded Black schools.</div>
-          <div class="resource-quote">"It was the largest civil rights demonstration in American history, and it was organized by parents and students — not elected officials."</div>
+          <div class="resource-desc">TIME Magazine historical feature on the February 3, 1964 New York City school boycott, the largest civil rights demonstration in U.S. history, when 464,000 students boycotted to protest segregated and underfunded Black schools.</div>
+          <div class="resource-quote">"It was the largest civil rights demonstration in American history, and it was organized by parents and students, not elected officials."</div>
           <div class="resource-meta">
-            <span class="resource-badge news">News: TIME</span>
-            <span class="resource-badge edu">Historical</span>
+            <span class="resource-badge news">News</span>
+            <span class="src-badge">Source 7</span>
             <a href="https://time.com/5890985/school-boycott-history/" target="_blank" class="resource-link">time.com →</a>
           </div>
         </div>
       </div>
 
-      <div class="resource-item" data-cat="org" data-tab="stories resist">
-        <div class="resource-icon org">✊</div>
-        <div class="resource-content">
-          <div class="resource-title">NAACP Youth & College Division</div>
-          <div class="resource-desc">Official NAACP resource page for youth and college student involvement, covering voter registration drives, campus organizing, anti-racism education, and how young people can connect with the oldest and largest civil rights organization in the U.S.</div>
-          <div class="resource-quote">"Young people have always been at the heart of every civil rights advance in this country's history."</div>
-          <div class="resource-meta">
-            <span class="resource-badge org">Civil Rights Org</span>
-            <a href="https://naacp.org/find-resources/youth-college" target="_blank" class="resource-link">naacp.org →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="resource-item" data-cat="org" data-tab="resist">
-        <div class="resource-icon org">📖</div>
-        <div class="resource-content">
-          <div class="resource-title">Anti-Racism K-12 Education: NAACP</div>
-          <div class="resource-desc">NAACP guide on integrating anti-racism into K-12 education, covering classroom practices, school policies, curriculum design, and how educators and students can work together to create more equitable learning environments.</div>
-          <div class="resource-quote">"Anti-racism education is not about making students feel guilty — it is about equipping them to build a more just world."</div>
-          <div class="resource-meta">
-            <span class="resource-badge org">Civil Rights Org</span>
-            <span class="resource-badge edu">Education Resource</span>
-            <a href="https://naacp.org/resources/anti-racism-k-12-education" target="_blank" class="resource-link">naacp.org →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="resource-item" data-cat="org" data-tab="resist">
-        <div class="resource-icon org">📚</div>
-        <div class="resource-content">
-          <div class="resource-title">Maintaining Accurate African American History in School Curriculum: NAACP</div>
-          <div class="resource-desc">NAACP policy brief on the importance of accurate Black history in school curricula, addressing current legislative efforts to restrict or remove Black history from classrooms and why this matters for all students.</div>
-          <div class="resource-quote">"You cannot understand America without understanding the full story of the people who built it and fought for its ideals."</div>
-          <div class="resource-meta">
-            <span class="resource-badge org">Civil Rights Org</span>
-            <a href="https://naacp.org/resources/maintaining-accurate-african-american-history-school-curriculum" target="_blank" class="resource-link">naacp.org →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="resource-item" data-cat="gov" data-tab="history">
-        <div class="resource-icon gov">🏛️</div>
-        <div class="resource-content">
-          <div class="resource-title">Library of Congress: Race and Segregation Resources</div>
-          <div class="resource-desc">Government historical archive and educational materials from the Library of Congress covering race, segregation, and civil rights history, including primary documents, photographs, and research materials.</div>
-          <div class="resource-quote">"Primary sources put students in direct contact with the evidence of history — and with the humanity of those who lived it."</div>
-          <div class="resource-meta">
-            <span class="resource-badge gov">Government Archive</span>
-            <a href="https://geo.loc.gov/datasets/increasing-access-and-opportunity" target="_blank" class="resource-link">loc.gov →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="resource-item" data-cat="edu" data-tab="history">
-        <div class="resource-icon edu">📰</div>
-        <div class="resource-content">
-          <div class="resource-title">Brown v. Board of Education Summary and Impact: History.com</div>
-          <div class="resource-desc">Clear, accessible overview of the Brown v. Board of Education case, covering its origins, legal arguments, the Supreme Court's reasoning, and its lasting impact on American education and civil rights law.</div>
-          <div class="resource-quote">"Brown did not end segregation — but it made segregation legally indefensible, and gave the Civil Rights Movement its legal foundation."</div>
-          <div class="resource-meta">
-            <span class="resource-badge edu">Educational Media</span>
-            <a href="https://www.history.com/articles/brown-v-board-of-education-of-topeka" target="_blank" class="resource-link">history.com →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="resource-item" data-cat="stats" data-tab="modern">
-        <div class="resource-icon stats">📊</div>
-        <div class="resource-content">
-          <div class="resource-title">U.S. Census Race Data</div>
-          <div class="resource-desc">Official U.S. Census Bureau statistics on race and demographics, including population data, socioeconomic indicators, and historical trends used by researchers to measure racial inequality in education, housing, and economic opportunity.</div>
-          <div class="resource-quote">"Government data tells us who we are as a nation — and where we still fall short of equality."</div>
-          <div class="resource-meta">
-            <span class="resource-badge gov">Government Data</span>
-            <span class="resource-badge stats">Statistics</span>
-            <a href="https://www.census.gov/topics/population/race.html" target="_blank" class="resource-link">census.gov →</a>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <div class="bib-section">
-      <button class="bib-toggle" onclick="toggleBib()">📋 View Annotated Bibliography</button>
-      <div class="bib-content" id="bibContent">
-        <div class="bib-entry"><strong>National Archives. (1954).</strong> "Brown v. Board of Education." U.S. National Archives and Records Administration. archives.gov/milestone-documents/brown-v-board-of-education. <em>Government primary source. Used for historical overview of the 1954 ruling and its constitutional significance.</em></div>
-        <div class="bib-entry"><strong>Howard University School of Law Library. (n.d.).</strong> "Jim Crow Laws and Black Rights." Civil Rights History Project. library.law.howard.edu/civilrightshistory/blackrights/jimcrow. <em>Academic legal archive. Used to explain the scope and impact of Jim Crow era discrimination.</em></div>
-        <div class="bib-entry"><strong>Smithsonian National Museum of African American History and Culture. (n.d.).</strong> "The Struggle Against Segregated Education." nmaahc.si.edu. <em>Museum and educational source. Used for civil rights movement context and education equality history.</em></div>
-        <div class="bib-entry"><strong>NAACP. (2024).</strong> "NAACP Calls for Equity in Public Education." naacp.org/resources/naacp-calls-equity-public-education. <em>Civil rights organization. Used for modern education inequality data and policy advocacy context.</em></div>
-        <div class="bib-entry"><strong>Reuters. (April 15, 2025).</strong> "NAACP Sues U.S. Education Department over DEI School Funding Cuts." reuters.com. <em>News source. Used as a current events example of ongoing civil rights legal battles in education.</em></div>
-        <div class="bib-entry"><strong>AP News. (2024).</strong> "Even with school choice, some Black families find options lacking decades after Brown v. Board." apnews.com. <em>News source. Used to show that school inequality persists despite policy reforms.</em></div>
-        <div class="bib-entry"><strong>Pew Research Center. (2024).</strong> "Race & Ethnicity." pewresearch.org/topic/race-ethnicity/. <em>Statistical/research source. Used for modern data on racial disparities in education, policing, and economics.</em></div>
-        <div class="bib-entry"><strong>TIME Magazine. (2021).</strong> "Nearly Half of NYC Students Boycotted Schools to Protest Segregation." time.com/5890985/school-boycott-history. <em>News/historical source. Used for the 1964 NYC school boycott story and student activism history.</em></div>
-        <div class="bib-entry"><strong>NAACP. (n.d.).</strong> "Youth & College Division." naacp.org/find-resources/youth-college. <em>Civil rights organization. Used for modern student activism context and youth organizing resources.</em></div>
-        <div class="bib-entry"><strong>NAACP. (n.d.).</strong> "Anti-Racism, K–12 Education." naacp.org/resources/anti-racism-k-12-education. <em>Civil rights organization. Used for the "How to Resist Injustice" section and action strategies.</em></div>
-        <div class="bib-entry"><strong>NAACP. (n.d.).</strong> "Maintaining Accurate African American History in School Curriculum." naacp.org. <em>Civil rights organization. Used for curriculum advocacy section and resistance strategies.</em></div>
-        <div class="bib-entry"><strong>U.S. Census Bureau. (2024).</strong> "Race." census.gov/topics/population/race.html. <em>Government statistics. Used for demographic data supporting modern impact section.</em></div>
-        <div class="bib-entry"><strong>Library of Congress. (n.d.).</strong> "Increasing Access and Opportunity." loc.gov. <em>Government archive. Used for historical primary source context and educational materials.</em></div>
-        <div class="bib-entry"><strong>History.com. (2024).</strong> "Brown v. Board of Education of Topeka." history.com. <em>Educational source. Used for accessible summary of Brown v. Board for general audience context.</em></div>
-      </div>
-    </div>
 
   </div>
 </section>
 
 <footer>
   <strong style="color:var(--cream);">UNBROKEN</strong> | A Racism Awareness Educational Project &nbsp;|&nbsp;
-  Sources: National Archives, NAACP, Smithsonian, Reuters, AP News, Pew Research, TIME, Howard Law Library, Library of Congress, U.S. Census &nbsp;|&nbsp;
+  Sources: National Archives, Howard Law Library, Smithsonian, NAACP, Reuters, Pew Research, TIME &nbsp;|&nbsp;
   <a href="https://naacp.org" target="_blank">naacp.org</a>
 </footer>
 
@@ -1339,12 +1213,6 @@ function filterResources(val, dimension, btn) {
   });
 }
 
-function toggleBib() {
-  const bib = document.getElementById('bibContent');
-  bib.classList.toggle('open');
-  const btn = document.querySelector('.bib-toggle');
-  btn.textContent = bib.classList.contains('open') ? '📋 Hide Annotated Bibliography' : '📋 View Annotated Bibliography';
-}
 
 var homeEl = document.getElementById('home');
 homeEl.style.display = 'flex';

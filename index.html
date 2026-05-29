@@ -575,6 +575,148 @@
   }
 
   .src-badge { display: inline-block; font-size: 0.63rem; font-weight: 700; background: rgba(212,160,23,0.12); color: var(--gold); border: 1px solid rgba(212,160,23,0.25); border-radius: 3px; padding: 1px 5px; margin-left: 4px; vertical-align: middle; letter-spacing: 0.5px; }
+
+  /* ==============================
+     RESPONSIVE — TABLET (max 768px)
+  ============================== */
+  @media (max-width: 768px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .nav-mobile-toggle { display: flex; }
+
+    .home-title { font-size: clamp(3.5rem, 18vw, 6rem); }
+    .home-stats { flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+    .stat-item { min-width: 120px; }
+
+    .section-inner { padding: 2rem 1.25rem 3rem; }
+    .section-title { font-size: clamp(2rem, 8vw, 3rem); }
+
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .impact-cards { grid-template-columns: 1fr; }
+    .action-grid { grid-template-columns: 1fr; }
+    .stories-grid { grid-template-columns: 1fr; }
+
+    .bar-label { width: 90px; font-size: 0.72rem; }
+
+    .next-tab-btn { bottom: 1rem; right: 1rem; padding: 0.7rem 1.25rem; font-size: 0.75rem; }
+
+    .resources-categories > div { gap: 0.4rem; }
+    .res-filter { font-size: 0.68rem; padding: 0.35rem 0.75rem; }
+
+    .history-connection { padding: 1.25rem; }
+    .resist-intro { padding: 1.25rem; }
+
+    .pledge-section { padding: 1.5rem 1rem; }
+
+    footer { font-size: 0.68rem; padding: 1rem; line-height: 1.8; }
+  }
+
+  /* ==============================
+     RESPONSIVE — PHONE (max 480px)
+  ============================== */
+  @media (max-width: 480px) {
+    nav { height: 52px; }
+    .nav-brand { font-size: 1.3rem; }
+    section { padding-top: 52px; }
+    #home { padding-top: 52px; }
+
+    .home-eyebrow { font-size: 0.65rem; letter-spacing: 3px; margin-bottom: 1rem; }
+    .home-title { font-size: clamp(3rem, 22vw, 5rem); letter-spacing: 1px; }
+    .home-subtitle { font-size: 0.92rem; margin-top: 1.25rem; }
+    .home-cta { padding: 0.85rem 2rem; font-size: 0.8rem; margin-top: 2rem; }
+    .home-stats { gap: 1rem; margin-top: 2.5rem; padding-top: 1.5rem; }
+    .stat-num { font-size: 1.8rem; }
+    .stat-label { font-size: 0.62rem; }
+
+    .section-inner { padding: 1.5rem 1rem 2.5rem; }
+    .section-title { font-size: clamp(1.8rem, 10vw, 2.5rem); }
+    .section-lead { font-size: 0.88rem; }
+
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .stat-card-num { font-size: 2rem; }
+    .stat-card-label { font-size: 0.72rem; }
+
+    .timeline-card { padding: 1rem 1.1rem; }
+    .timeline-card-title { font-size: 0.95rem; }
+    .timeline-card-body { font-size: 0.82rem; }
+    .golden-line { font-size: 0.82rem; padding: 0.5rem 0.85rem; }
+
+    .htimeline-btn { width: 36px; height: 36px; font-size: 1rem; }
+    .htimeline-counter { font-size: 0.72rem; }
+
+    .impact-card { padding: 1.1rem; }
+    .impact-card-title { font-size: 0.92rem; }
+    .impact-card-body { font-size: 0.82rem; }
+
+    .story-card-title { font-size: 1rem; }
+    .story-card-text { font-size: 0.82rem; }
+    .story-quote { font-size: 0.85rem; }
+
+    .action-num { font-size: 2rem; }
+    .action-title { font-size: 0.92rem; }
+    .action-body { font-size: 0.82rem; }
+
+    .connection-text { font-size: 0.82rem; }
+
+    .resource-item { flex-direction: column; gap: 0.75rem; }
+    .resource-icon { width: 32px; height: 32px; font-size: 0.9rem; }
+    .resource-title { font-size: 0.85rem; }
+    .resource-desc { font-size: 0.78rem; }
+    .resource-quote { font-size: 0.75rem; }
+
+    .res-filter { font-size: 0.65rem; padding: 0.3rem 0.6rem; }
+
+    .bib-entry { font-size: 0.8rem; }
+
+    .next-tab-btn { bottom: 0.75rem; right: 0.75rem; padding: 0.65rem 1rem; font-size: 0.72rem; }
+
+    .glossary-popup { max-width: 240px; }
+    .glossary-popup-def { font-size: 0.78rem; }
+
+    .chart-container { padding: 1rem; }
+    .chart-title { font-size: 0.8rem; }
+    .bar-label { width: 75px; font-size: 0.68rem; }
+    .bar-val { font-size: 0.72rem; }
+
+    footer { font-size: 0.65rem; }
+  }
+
+  /* ==============================
+     MOBILE NAV MENU
+  ============================== */
+  .nav-mobile-toggle {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 6px; background: none; border: none;
+  }
+  .nav-mobile-toggle span {
+    display: block; width: 22px; height: 2px;
+    background: var(--text-muted); border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .nav-mobile-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-mobile-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-mobile-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-mobile-menu {
+    display: none; position: fixed; top: 60px; left: 0; right: 0;
+    background: rgba(13,13,13,0.98); border-bottom: 1px solid var(--border);
+    z-index: 999; padding: 1rem 0; flex-direction: column;
+  }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-menu a {
+    color: var(--text-muted); text-decoration: none;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; padding: 0.85rem 2rem;
+    border-bottom: 1px solid var(--border); transition: color 0.2s;
+  }
+  .nav-mobile-menu a:last-child { border-bottom: none; }
+  .nav-mobile-menu a:hover, .nav-mobile-menu a.active { color: var(--gold); }
+
+  @media (min-width: 769px) {
+    .nav-mobile-toggle { display: none !important; }
+    .nav-mobile-menu { display: none !important; }
+    .nav-links { display: flex !important; }
+  }
 </style>
 </head>
 <body>
@@ -592,7 +734,18 @@
     <li><a href="#" onclick="showTab('resist')" id="nav-resist">Resist</a></li>
     <li><a href="#" onclick="showTab('resources')" id="nav-resources">Resources</a></li>
   </ul>
+  <button class="nav-mobile-toggle" id="mobileToggle" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showTab('home');closeMobileNav()" id="mob-home" class="active">Home</a>
+  <a href="#" onclick="showTab('history');closeMobileNav()" id="mob-history">History</a>
+  <a href="#" onclick="showTab('modern');closeMobileNav()" id="mob-modern">Modern Impact</a>
+  <a href="#" onclick="showTab('stories');closeMobileNav()" id="mob-stories">Stories</a>
+  <a href="#" onclick="showTab('resist');closeMobileNav()" id="mob-resist">Resist</a>
+  <a href="#" onclick="showTab('resources');closeMobileNav()" id="mob-resources">Resources</a>
+</div>
 <button class="next-tab-btn" id="nextTabBtn" onclick="goNextTab()"></button>
 
 <section id="home" class="active">
@@ -1163,6 +1316,17 @@
 </footer>
 
 <script>
+function toggleMobileNav() {
+  var toggle = document.getElementById('mobileToggle');
+  var menu = document.getElementById('mobileMenu');
+  toggle.classList.toggle('open');
+  menu.classList.toggle('open');
+}
+function closeMobileNav() {
+  document.getElementById('mobileToggle').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
 function showTab(id) {
   document.querySelectorAll('section').forEach(s => {
     s.classList.remove('active', 'tab-enter');
@@ -1183,6 +1347,9 @@ function showTab(id) {
 
   const navEl = document.getElementById('nav-' + id);
   if (navEl) navEl.classList.add('active');
+  document.querySelectorAll('.nav-mobile-menu a').forEach(a => a.classList.remove('active'));
+  const mobEl = document.getElementById('mob-' + id);
+  if (mobEl) mobEl.classList.add('active');
 
   window.scrollTo({ top: 0, behavior: 'instant' });
   return false;
